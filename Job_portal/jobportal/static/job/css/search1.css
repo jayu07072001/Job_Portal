@@ -37,6 +37,13 @@
   
   .signup-box {
     width: 360px;
+    height: 800px;
+    margin: auto;
+    background-color: white;
+    border-radius: 3px;
+  }
+  .signup-box1 {
+    width: 360px;
     height: 670px;
     margin: auto;
     background-color: white;
@@ -55,8 +62,16 @@
     text-align: center;
     padding-top: 15px;
   }
+  .signup-box1 h1 {
+    text-align: center;
+    padding-top: 15px;
+  }
   
   .signup-box form {
+    width: 300px;
+    margin-left: 20px;
+  }
+  .signup-box1 form {
     width: 300px;
     margin-left: 20px;
   }
@@ -66,8 +81,20 @@
     margin-top: 20px;
     font-size: 18px;
   }
-  
+  .signup-box1 form label {
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+  }
    .signup-box form input {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+  }
+  .signup-box1 form input {
     width: 100%;
     padding: 7px;
     border: none;
@@ -84,7 +111,21 @@
     color: white;
     font-size: 18px;
   }
+  .signup-box1 form input[type="button"] {
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #49c1a2;
+    color: white;
+    font-size: 18px;
+  }
    .signup-box  p {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+  }
+  .signup-box1  p {
     text-align: center;
     padding-top: 20px;
     font-size: 15px;

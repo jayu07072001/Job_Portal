@@ -1,17 +1,21 @@
 {% extends 'job/base.html' %}
 {% load static %}
-{% block title %} User Login {% endblock title %}
+{% block title %} User Signup{% endblock title %}
 {% block content %}
 <div class="bg1">
 <div class="signup-box">
       <h1>Sign Up</h1>
-      <form>
+      <form method="post">
       {% csrf_token %}
         <label>First Name</label>
         <input type="text" placeholder="" />
         <label>Last Name</label>
         <input type="text" placeholder="" />
         <label>Email</label>
+        <input type="email" placeholder="" />
+        <label>Contact</label>
+        <input type="email" placeholder="" />
+        <label>Gender</label>
         <input type="email" placeholder="" />
         <label>Password</label>
         <input type="password" placeholder="" />
