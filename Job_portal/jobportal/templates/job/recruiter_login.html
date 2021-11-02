@@ -1,0 +1,23 @@
+{% extends 'job/base.html' %}
+{% load static %}
+{% block title %} Recruiter Login {% endblock title %}
+{% block content %}
+<div class="loginbg">
+<div class="login-box">
+      <h1>Login</h1>
+      <form>
+      {% csrf_token %}
+        <label>Email</label>
+        <input type="email" placeholder="" />
+        <label>Password</label>
+        <input type="password" placeholder="" />
+        <input type="button" value="Submit" />
+      </form>
+    </div>
+    <div class="para-signup">
+    <p class="para-2">
+      Not have an account? <a href="{% url 'signup_jobseeker' %}">Sign Up Here</a>
+    </p>
+    </div>
+    </div>
+{%endblock content%}

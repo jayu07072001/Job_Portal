@@ -1,0 +1,150 @@
+.search-job
+{
+    top: 20px;
+    padding: 40 20;
+    background-image: linear-gradient(to right,#485461 0%,#28313b 74%);
+    border-radius: 25px;
+    font-family:'Poppins',sans-serif;
+}
+.search-job .form-control
+{
+    
+    max-width: 450px;
+    display:inline-flex;
+    margin: 10px 10px;
+    border-radius: 20;
+    box-shadow: none;
+    border: none;
+}
+.search-job .btn-primary
+{
+    border-radius: 10;
+    box-shadow: none;
+    border: none;
+    display: inline-flex;
+    margin: 5px;
+    padding: 5px 20px;
+    background-color: #f9aa33;
+    color: black;
+    transition: color 0.5s;
+}
+.bg1
+{
+  width: 100%;
+  background-color:#ddd ;
+}
+
+  
+  .signup-box {
+    width: 360px;
+    height: 670px;
+    margin: auto;
+    background-color: white;
+    border-radius: 3px;
+  }
+  
+  .login-box {
+    width: 360px;
+    height: 320px;
+    margin: auto;
+    border-radius: 3px;
+    background-color: white;
+  }
+  
+  .signup-box h1 {
+    text-align: center;
+    padding-top: 15px;
+  }
+  
+  .signup-box form {
+    width: 300px;
+    margin-left: 20px;
+  }
+  
+  .signup-box form label {
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+   .signup-box form input {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+  }
+   .signup-box form input[type="button"] {
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #49c1a2;
+    color: white;
+    font-size: 18px;
+  }
+   .signup-box  p {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+  }
+
+  .para-2 {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    margin-top: -10px;
+  }
+  .para-2 a {
+    color: #49c1a2;
+  }
+  .para-signup  p {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+  }
+  .login-box p
+  {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 15px;
+  }
+  .login-box h1 {
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .login-box form {
+    width: 300px;
+    margin-left: 20px;
+  }
+  
+  .login-box form label {
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+   .login-box form input {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+  }
+   .login-box form input[type="button"] {
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #49c1a2;
+    color: white;
+    font-size: 18px;
+  }
+  .loginbg
+  {
+    background-color: #ddd;
+    
+  }
