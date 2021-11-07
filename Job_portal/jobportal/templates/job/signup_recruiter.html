@@ -5,10 +5,10 @@
 <div class="bg1">
 <div class="signup-box1">
       <h1>Sign Up</h1>
-      <form >
+      <form method="post" onsubmit="return checkpass()">
       {% csrf_token %}
         <label>First Name</label>
-        <input type="text" placeholder="" />
+        <input type="text" placeholder=""  />
         <label>Last Name</label>
         <input type="text" placeholder="" />
         <label>Email</label>

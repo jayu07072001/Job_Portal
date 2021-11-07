@@ -2,26 +2,38 @@
 {% load static %}
 {% block title %} User Signup{% endblock title %}
 {% block content %}
+<script>
+function checkpass()
+{
+  if(document.signup.pwd1.value!=document.signup.pwd2.value)
+  {
+    alert('password and confirm password doesnot match');
+    document.signup.pwd2.focus();
+    return false;
+  }
+  return true;
+}
+</script>
 <div class="bg1">
 <div class="signup-box">
       <h1>Sign Up</h1>
-      <form method="post">
+      <form method="post" name="signup"  onsubmit="return checkpass()">
       {% csrf_token %}
         <label>First Name</label>
-        <input type="text" placeholder="" />
+        <input type="text" placeholder="" name="fname" />
         <label>Last Name</label>
-        <input type="text" placeholder="" />
+        <input type="text" placeholder="" name="lname" />
         <label>Email</label>
-        <input type="email" placeholder="" />
+        <input type="email" placeholder="" name="email"/>
         <label>Contact</label>
-        <input type="email" placeholder="" />
+        <input type="text" placeholder="" name="cont"/>
         <label>Gender</label>
-        <input type="email" placeholder="" />
+        <input type="text" placeholder="" name="gender" />
         <label>Password</label>
-        <input type="password" placeholder="" />
+        <input type="password" placeholder="" name="pwd1" />
         <label>Confirm Password</label>
-        <input type="password" placeholder="" />
-        <input type="button" value="Submit" />
+        <input type="password" placeholder="" name="pwd2"/>
+        <input type="submit" value="Submit" />
       </form>
       <p>
         By clicking the Sign Up button,you agree to our <br />
@@ -33,4 +45,18 @@
       Already have an account? <a href="{% url 'user_login' %}">Login here</a>
     </p></div>
     </div>
+    {% ifequal error "no" %}
+    <script>
+    alert("signup successfully");
+    window.locations=('{% url 'user_login' %}')
+    </script>
+    {%endifequal%}
+
+    {% ifequal error "yes" %}
+    <script>
+    alert("Something went wrong");
+    </script>
+    {%endifequal%}
+
 {%endblock content%}
+

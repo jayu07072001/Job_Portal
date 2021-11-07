@@ -102,7 +102,7 @@
     border-radius: 6px;
     outline: none;
   }
-   .signup-box form input[type="button"] {
+   .signup-box form input[type="submit"] {
     width: 320px;
     height: 35px;
     margin-top: 20px;
