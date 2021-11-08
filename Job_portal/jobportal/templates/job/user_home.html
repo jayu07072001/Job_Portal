@@ -1,0 +1,16 @@
+{% extends 'job/user_navigation.html' %}
+{% load static %}
+{%block title%} User_Home {%endblock title %}
+{% block content %}
+<div class="banner">
+<h1><center>Find your job on our website</center></h1>
+</div>
+<br>
+<br>
+<div class="search-job text-center">
+    <input type ="text" class="form-control" placeholder="Python Developer">
+    <input type ="text" class="form-control" placeholder="place">
+    <input type="button" class="btn btn-primary" value="Search job">
+</div>
+<br>
+{% endblock content %}

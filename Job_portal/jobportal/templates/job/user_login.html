@@ -8,10 +8,10 @@
       <form method="post">
       {% csrf_token %}
         <label>Email</label>
-        <input type="email" placeholder="" />
+        <input type="email" placeholder="" name="uname"/>
         <label>Password</label>
-        <input type="password" placeholder="" />
-        <input type="button" value="Submit" />
+        <input type="password" placeholder="" name="pwd3" />
+        <input type="submit" value="Submit" />
       </form>
     </div>
     <div class="para-signup">
@@ -20,4 +20,19 @@
     </p>
     </div>
     </div>
+
+
+  {% ifequal error "no" %}
+    <script>
+    alert("Login successfully");
+    window.location = ('{% url 'user_home' %}');
+    </script>
+    {%endifequal%}
+
+    {% ifequal error "yes" %}
+    <script>
+    alert("Invalid Login credential");
+    </script>
+{%endifequal%}
+
 {%endblock content%}
