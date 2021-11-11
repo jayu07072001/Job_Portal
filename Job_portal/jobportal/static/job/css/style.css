@@ -32,6 +32,11 @@ nav ul li{
     display:inline-block;
     list-style: none;
 }
+nav ul li p {
+    color: white;
+    display:inline-block;
+    list-style: none;
+}
 nav ul li a{
     color:white;
     text-decoration: none;

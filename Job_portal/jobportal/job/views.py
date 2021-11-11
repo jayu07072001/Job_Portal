@@ -18,6 +18,12 @@ def user_about(request):
 def user_contact(request):
     return render(request,'job/user_contact.html')
 
+def recruiter_about(request):
+    return render(request,'job/recruiter_about.html')
+
+def recruiter_contact(request):
+    return render(request,'job/recruiter_contact.html')
+
 def user_login(request):
     error=""
     if request.method=='POST':
@@ -71,6 +77,13 @@ def user_home(request):
 
     return render(request,'job/user_home.html')
 
+def recruiter_home(request):
+    if not request.user.is_authenticated:
+        return redirect('recruiter_login')
+
+    return render(request,'job/recruiter_home.html')
+
+
 
 def Logout(request):
     logout(request)
@@ -86,17 +99,39 @@ def signup_recruiter(request):
         c=request.POST['company']
         con=request.POST['cont']
         p=request.POST['pwd1']
-        type="recruiter"
         try:
            user= User.objects.create_user(first_name=f,last_name=l,username=e,password=p)
-           job_seeker.objects.create(user=user,mobile=con,type=type,company=c,status="pending")
+           recruiter.objects.create(user=user,mobile=con,type="recruiter",company=c)
            error="no"
         except:
             error="yes"
         
     d={'error':error}
-    
     return render(request,'job/signup_recruiter.html',d)
 
 def recruiter_login(request):
-    return render(request,'job/recruiter_login.html')
+    error=""
+    if request.method=='POST':
+        u=request.POST['uname']
+        p=request.POST['pwd']
+        user=authenticate(username=u,password=p)
+        if user:
+            try:
+                user1 = recruiter.objects.get(user=user)
+                if user1.type == "recruiter":
+                    login(request,user)
+                    error="no"
+            except:
+                error="yes"
+        else:
+            error="yes"
+        
+    d={'error':error}
+    return render(request,'job/recruiter_login.html',d)
+
+
+def add_job(request):
+    if not request.user.is_authenticated:
+        return redirect('recruiter_login')
+
+    return render(request,'job/add_job.html')

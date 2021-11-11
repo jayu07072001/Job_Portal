@@ -48,7 +48,7 @@ function checkpass()
     {% ifequal error "no" %}
     <script>
     alert("signup successfully");
-    window.locations('{% url 'user_login' %}')
+    window.location('{% url 'user_login' %}')
     </script>
     {%endifequal%}
 

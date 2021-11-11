@@ -5,12 +5,12 @@
 <div class="loginbg">
 <div class="login-box">
       <h1>Login</h1>
-      <form>
+      <form method="post">
       {% csrf_token %}
         <label>Email</label>
-        <input type="email" placeholder="" />
+        <input type="email" placeholder="" name="uname" />
         <label>Password</label>
-        <input type="password" placeholder="" />
+        <input type="password" placeholder="" name="pwd"/>
         <input type="submit" value="Submit" />
       </form>
     </div>
@@ -20,4 +20,18 @@
     </p>
     </div>
     </div>
+
+  {% ifequal error "no" %}
+    <script>
+    alert("Login successfully");
+    window.location = ('{% url 'recruiter_home' %}');
+    </script>
+    {%endifequal%}
+
+    {% ifequal error "yes" %}
+    <script>
+    alert("Invalid Login credential");
+    </script>
+    {%endifequal%}
+
 {%endblock content%}

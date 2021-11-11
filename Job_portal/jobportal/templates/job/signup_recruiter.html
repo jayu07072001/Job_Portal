@@ -2,6 +2,18 @@
 {% load static %}
 {% block title %} Recruiter Signup{% endblock title %}
 {% block content %}
+<script>
+function checkpass()
+{
+  if(document.signup.pwd1.value!=document.signup.pwd2.value)
+  {
+    alert('password and confirm password doesnot match');
+    document.signup.pwd2.focus();
+    return false;
+  }
+  return true;
+}
+</script>
 <div class="bg1">
 <div class="signup-box1">
       <h1>Sign Up</h1>
@@ -33,4 +45,19 @@
       Already have an account? <a href="{% url 'recruiter_login' %}">Login here</a>
     </p></div>
     </div>
+
+
+    {% ifequal error "no" %}
+    <script>
+    alert("signup successfully");
+    window.location('{% url 'recruiter_login' %}')
+    </script>
+    {%endifequal%}
+
+    {% ifequal error "yes" %}
+    <script>
+    alert("Something went wrong");
+    </script>
+    {%endifequal%}
+
 {%endblock content%}
