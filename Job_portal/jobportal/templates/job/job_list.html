@@ -2,13 +2,15 @@
 {% load static %}
 {% block title %} job_list {% endblock title%}
 {% block content %}
+<div class="bg1">
 <div class="hedinglist">
 <br>
 <br>
 
 <h2 style="text-align:center;font-size:40px;margin-top:-16px;">Job List </h2>
 </div>
-<table class="table table-hover" id="example">
+<div class="listing">
+<table class="table table-hover" id="example" >
 <thead>
 <tr>
     <th style ="padding-left:40px">S.No.</th>
@@ -20,14 +22,17 @@
 
     <tbody>
         {% for i in job %}
-            <tr style="background-color:#DEB887">
+            <tr style="background-color:#485461">
                 <td>{{forloop.counter}}</td>
                 <td>{{i.title}}</td>
                 <td>{{i.creation_date}}</td>
                 <td><a href="#" class="btn btn-success btn-sm">edit</a></td>
-                
             </tr>
         {%endfor%}
     </tbody>
 </table>
+<br>
+</div>
+</div>
+
 {% endblock content %}
