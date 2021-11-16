@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from .models import *
 from django.contrib.auth import authenticate,login,logout
+from datetime import date
 
 def home(request):
     return render(request, 'job/home.html')
@@ -133,5 +134,38 @@ def recruiter_login(request):
 def add_job(request):
     if not request.user.is_authenticated:
         return redirect('recruiter_login')
+    
+    error=""
+    if request.method=='POST':
+        j=request.POST['jobtitle']
+        sd=request.POST['start_date']
+        ed=request.POST['end_date']
+        s=request.POST['salery']
+        loc=request.POST['location']
+        lg=request.FILES['logo']
+        exp=request.POST['experience']
+        sk=request.POST['skills']
+        des=request.POST['description']
+        user= request.user
+        recruiter2=recruiter.objects.get(user=user)
+        try:
+           jobs.objects.create(recruiter1=recruiter2,start_date=sd,end_date=ed,title=j,salary=s,description=des,image=lg,experience=exp,location=loc,skills=sk,creation_date=date.today())
+           error="no"
+        except:
+            error="yes"
+        
+    d={'error':error}
 
-    return render(request,'job/add_job.html')
+
+
+    return render(request,'job/add_job.html',d)
+
+def job_list(request):
+    if not request.user.is_authenticated:
+        return redirect('recruiter_login')
+
+    user=request.user
+    recruiter2=recruiter.objects.get(user=user)
+    job=jobs.objects.filter(recruiter1=recruiter2)
+    d={'job':job}
+    return render(request,'job/job_list.html',d)

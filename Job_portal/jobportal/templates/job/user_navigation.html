@@ -22,6 +22,7 @@
 		<li><a href ="{% url 'user_about' %}" >About</a></li>
 		<li><a href = "{% url 'user_contact' %}">contact</a></li> 
         <li><a href = "{% url 'Logout' %}">Logout</a></li> 
+		<li class ="name1"><p>{{request.user.first_name}}</p></li>
 	</ul>
 	</nav>
 {% block content %} {% endblock content %}

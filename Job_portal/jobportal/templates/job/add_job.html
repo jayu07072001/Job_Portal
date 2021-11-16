@@ -1,0 +1,47 @@
+{% extends 'job/recruiter_navigation.html' %}
+{% load static %}
+{%block title%} Recruiter_Post_job {%endblock title %}
+{% block content %}
+<div class="bg1">
+
+<div class="signup-box2">
+      <h1>Add Job </h1>
+      <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        <label>Job Title</label>
+        <input type="text" placeholder="" name="jobtitle" required />
+        <label>Start Date</label>
+        <input type="date" placeholder="" name="start_date"/>
+        <label>End Date</label>
+        <input type="date" placeholder="" name="end_date"/>
+        <label>salary(per month)</label>
+        <input type="text" placeholder="" name="salery" />
+        <label>Company Location</label>
+        <input type="text" placeholder="" name="location" required />
+        <label>Company Logo</label>
+        <input type="file" placeholder="" name="logo" />
+        <label>Experience(In Years)</label>
+        <input type="text" placeholder="" name="experience" />
+        <label>Skills</label>
+        <input type="text" placeholder="" name="skills" />
+        <label>Description</label>
+        <textarea name="description" ></textarea>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    </div>
+
+
+{% ifequal error "no" %}
+    <script>
+    alert("Job has been posted successfully");
+    window.location = ('{% url 'job_list' %}')
+    </script>
+    {%endifequal%}
+
+    {% ifequal error "yes" %}
+    <script>
+    alert("Something went wrong");
+    </script>
+    {%endifequal%}
+{% endblock content %}

@@ -26,9 +26,12 @@ function checkpass()
         <label>Email</label>
         <input type="email" placeholder="" name="email"/>
         <label>Contact</label>
-        <input type="text" placeholder="" name="cont"/>
+        <input type="number" placeholder="" name="cont"/>
         <label>Gender</label>
-        <input type="text" placeholder="" name="gender" />
+          <select name="gender" >
+               <option value="male">Male</option>
+              <option value="female">Female</option>
+          </select>
         <label>Password</label>
         <input type="password" placeholder="" name="pwd1" />
         <label>Confirm Password</label>
@@ -42,13 +45,13 @@ function checkpass()
     </div>
     <div class="para-signup">
     <p class="para-2">
-      Already have an account? <a href="{% url 'user_login' %}">Login here</a>
+    Already have an account? <a href=" {% url 'user_login'%} ">Login here</a>
     </p></div>
     </div>
     {% ifequal error "no" %}
     <script>
     alert("signup successfully");
-    window.location('{% url 'user_login' %}')
+    window.location = ('{% url 'user_login' %}')
     </script>
     {%endifequal%}
 
@@ -57,6 +60,5 @@ function checkpass()
     alert("Something went wrong");
     </script>
     {%endifequal%}
-
 {%endblock content%}
 
