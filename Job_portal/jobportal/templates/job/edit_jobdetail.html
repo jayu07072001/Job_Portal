@@ -1,0 +1,47 @@
+{% extends 'job/recruiter_navigation.html' %}
+{% load static %}
+{%block title%} Recruiter_Post_job {%endblock title %}
+{% block content %}
+<div class="bg1">
+<div class="signup-box2">
+      <h1>Add Job </h1>
+      <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        <label>Job Title</label>
+        <input type="text" placeholder="" name="jobtitle" value="{{job.title}}" required />
+        <label>Start Date : <span style="color:red;"> [{{job.start_date}}]</span></label>
+        <input type="date" placeholder="" name="start_date"/>
+        <label>End Date : <span style="color:red;">[{{job.end_date}}]</span></label>
+        <input type="date" placeholder="" name="end_date"/>
+        <label>salary(per month)</label>
+        <input type="text" placeholder="" name="salery" value="{{job.salary}}" />
+        <label>Company Location</label>
+        <input type="text" placeholder="" name="location" value="{{job.location}}" required />
+        <label>Company Logo</label>
+        <input type="file" name="logo" value="{{job.image}}" />
+        <label>Experience(In Years)</label>
+        <input type="text" placeholder="" name="experience" value="{{job.experience}}" />
+        <label>Skills</label>
+        <input type="text" placeholder="" name="skills" value="{{job.skills}}" />
+        <label>Description</label>
+        <textarea name="description" >{{job.description}}</textarea>
+        <input type="submit" value="Submit"/>
+      </form>
+    </div>
+    </div>
+
+
+{% ifequal error "no" %}
+    <script>
+    alert("Job has been updated successfully");
+    window.location = ('{% url 'edit_jobdetail' job.id %}')
+    </script>
+{%endifequal%}
+
+{% ifequal error "yes" %}
+    <script>
+    alert("Something went wrong");
+    </script>
+{%endifequal%}
+
+{% endblock content %}

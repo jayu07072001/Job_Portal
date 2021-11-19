@@ -169,3 +169,52 @@ def job_list(request):
     job=jobs.objects.filter(recruiter1=recruiter2)
     d={'job':job}
     return render(request,'job/job_list.html',d)
+
+
+def edit_jobdetail(request,pid):
+    if not request.user.is_authenticated:
+        return redirect('recruiter_login')
+    
+    error=""
+    job=jobs.objects.get(id=pid)
+    if request.method=='POST':
+        j=request.POST['jobtitle']
+        sd=request.POST['start_date']
+        ed=request.POST['end_date']
+        s=request.POST['salery']
+        loc=request.POST['location']
+        exp=request.POST['experience']
+        sk=request.POST['skills']
+        des=request.POST['description']        
+        job.title=j
+        job.salary=s
+        job.location=loc
+        job.experience=exp
+        job.skills=sk
+        job.description=des
+        try:
+            job.save()
+            error="no"
+        except:
+            error="yes"
+        
+        if sd:
+            try:
+                job.start_date =sd
+                job.save()
+            except:
+                pass
+        else:
+            pass
+
+        if ed:
+            try:
+                job.end_date =sd
+                job.save()
+            except:
+                pass
+        else:
+            pass
+
+    d={'error':error,'job':job}
+    return render(request,'job/edit_jobdetail.html',d)
