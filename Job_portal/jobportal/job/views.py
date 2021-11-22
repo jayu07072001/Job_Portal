@@ -182,6 +182,7 @@ def edit_jobdetail(request,pid):
         sd=request.POST['start_date']
         ed=request.POST['end_date']
         s=request.POST['salery']
+        logo=request.FILES['logo']
         loc=request.POST['location']
         exp=request.POST['experience']
         sk=request.POST['skills']
@@ -192,6 +193,7 @@ def edit_jobdetail(request,pid):
         job.experience=exp
         job.skills=sk
         job.description=des
+        job.image=logo
         try:
             job.save()
             error="no"
@@ -218,3 +220,25 @@ def edit_jobdetail(request,pid):
 
     d={'error':error,'job':job}
     return render(request,'job/edit_jobdetail.html',d)
+
+def alljobs(request):
+    user=request.user
+    jobseeker=job_seeker.objects.get(user=user)
+    data=Apply.objects.filter(student=jobseeker)
+    job=jobs.objects.all().order_by('start_date')
+    li=[]
+    for i in data:
+        li.append(i.job.id)
+    d={'job':job,'li':li}
+    return render(request,'job/alljobs.html',d)
+
+
+def alljobs_base(request):
+    job=jobs.objects.all().order_by('start_date')
+    d={'job':job}
+    return render(request,'job/alljobs_base.html',d)
+
+def job_detail(request,uid):
+    job=jobs.objects.get(id=uid)
+    d={'job':job}
+    return render(request,'job/job_detail.html',d)

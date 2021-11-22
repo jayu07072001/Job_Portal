@@ -268,3 +268,23 @@
   margin-left: auto; 
   margin-right: auto;
 }
+.job_details .btn-success
+{
+    border-radius: 10;
+    box-shadow: none;
+    border: 1px;
+    display: inline-flex;
+    margin: 5px;
+    padding: 5px 20px;
+    background-color: #f9aa33;
+    color: black;
+    transition: color 0.5s;
+    font-weight: 500;
+}
+.vl {
+  border-left: 3px solid black ;
+  height: 250px;
+  left: 63%;
+  position: absolute;
+  margin-top: 53px;
+}

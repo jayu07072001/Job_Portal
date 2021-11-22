@@ -33,3 +33,12 @@ class jobs(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class Apply(models.Model):
+    job = models.ForeignKey(jobs,on_delete=models.CASCADE)
+    student=models.ForeignKey(job_seeker,on_delete=models.CASCADE)
+    resume=models.FileField(null=True)
+    applied_date=models.DateField()
+    def __str__(self):
+        return self.id

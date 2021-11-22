@@ -20,4 +20,7 @@ urlpatterns = [
     path('post_job/',views.add_job,name='add_job'),
     path('job_list/',views.job_list,name='job_list'),
     path('edit_jobdetail/<int:pid>',views.edit_jobdetail,name='edit_jobdetail'),
+    path('alljobs/',views.alljobs,name='alljobs'),
+    path('alljobs_base/',views.alljobs_base,name='alljobs_base'),
+    path('job_detail/<int:uid>',views.job_detail,name='job_detail'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
