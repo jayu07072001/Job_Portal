@@ -182,6 +182,7 @@
     background-color: #49c1a2;
     color: white;
     font-size: 18px;
+    padding:0;
   }
   .signup-box3 form input[type="submit"] {
     width: 320px;
@@ -191,6 +192,7 @@
     background-color: #49c1a2;
     color: white;
     font-size: 18px;
+    padding:0;
   }
   .signup-box1 form input[type="submit"] {
     width: 320px;
@@ -200,6 +202,7 @@
     background-color: #49c1a2;
     color: white;
     font-size: 18px;
+    padding:0;
   }
   .signup-box2 form input[type="submit"] {
     width: 100%;
@@ -209,6 +212,7 @@
     background-color: #49c1a2;
     color: white;
     font-size: 18px;
+    padding:0;
   }
   .signup-box2 form textarea 
   {
@@ -269,14 +273,31 @@
     border-radius: 6px;
     outline: none;
   }
+
+  .login-box .fa-eye::before{
+    font-size: 20px;
+    top: -29px;
+    right: -270px;
+    position: relative;
+    cursor: pointer;
+  }
    .login-box form input[type="submit"] {
     width: 320px;
     height: 35px;
     margin-top: 20px;
     border: none;
-    background-color: #49c1a2;
+    background-color: #000;
     color: white;
     font-size: 18px;
+    padding: 0;
+    position: absolute;
+    left: 450px;
+    bottom: 200px;
+
+  }
+  .login-box form input[type="submit"]:hover{
+    background-color: #009688;
+    transition: 0.5s;
   }
   .loginbg
   {

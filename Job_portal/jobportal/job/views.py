@@ -249,3 +249,11 @@ def apply_job(request,uid):
     job=jobs.objects.get(id=uid)
     d={'job':job}
     return render(request,'job/apply_job.html',d)
+
+def delete_job(request, pid):
+    if not request.user.is_authenticated:
+        return redirect('recruiter_login')
+    
+    job=jobs.objects.get(id=pid)
+    job.delete()
+    return redirect('job_list')
