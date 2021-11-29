@@ -1,0 +1,16 @@
+{% extends 'job/user_navigation.html' %}
+{% load static %}
+{%block title%} Apply Job {%endblock title %}
+{% block content %}
+<div class="bg1">
+<div class="signup-box3">
+      <h1>Sign Up</h1>
+      <form method="post" name="Apply"  onsubmit="return checkpass()">
+      {% csrf_token %}
+        <label>Resume</label>
+        <input type="file" placeholder="" name="fname" />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    </div>
+{%endblock content %}

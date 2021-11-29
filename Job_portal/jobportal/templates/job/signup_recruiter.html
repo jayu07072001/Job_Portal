@@ -17,7 +17,7 @@ function checkpass()
 <div class="bg1">
 <div class="signup-box1">
       <h1>Sign Up</h1>
-      <form method="post" onsubmit="return checkpass()">
+      <form method="post" name="signup" onsubmit="return checkpass()">
       {% csrf_token %}
         <label>First Name</label>
         <input type="text" placeholder="" name="fname" />
@@ -50,7 +50,7 @@ function checkpass()
     {% ifequal error "no" %}
     <script>
     alert("signup successfully");
-    window.location('{% url 'recruiter_login' %}')
+    window.location=('{% url 'recruiter_login' %}')
     </script>
     {%endifequal%}
 

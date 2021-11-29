@@ -23,4 +23,5 @@ urlpatterns = [
     path('alljobs/',views.alljobs,name='alljobs'),
     path('alljobs_base/',views.alljobs_base,name='alljobs_base'),
     path('job_detail/<int:uid>',views.job_detail,name='job_detail'),
+    path('apply_job/<int:uid>',views.apply_job,name='apply_job'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

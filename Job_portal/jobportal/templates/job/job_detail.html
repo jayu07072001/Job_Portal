@@ -22,7 +22,7 @@
         <p style="color:black;font-size:18px;font-family:sans-serif">Company Name : {{job.recruiter1.company}}
         <p style="color:black;font-size:18px;font-family:sans-serif;"><i class="fa fa-map-marker mr-2" style="margin-right:25px;"></i>Location : {{job.location}}
         <p style="color:black;font-size:18px;font-family:sans-serif;"  > <i class="fa fa-money" style="margin-right:10px;" ></i> Salary : <i class="fa fa-inr" style="margin-right:4px;"></i><strong>{{job.salary}}</strong></p>
-        <a href="" class="btn btn-success btn-sm" >Apply</a>
+        <a href="{% url 'apply_job' job.id %} " class="btn btn-success btn-sm" >Apply</a>
         </div>
     </div>
     <div class="col-md-4" >

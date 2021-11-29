@@ -242,3 +242,10 @@ def job_detail(request,uid):
     job=jobs.objects.get(id=uid)
     d={'job':job}
     return render(request,'job/job_detail.html',d)
+
+def apply_job(request,uid):
+    if not request.user.is_authenticated:
+        return redirect('user_login')
+    job=jobs.objects.get(id=uid)
+    d={'job':job}
+    return render(request,'job/apply_job.html',d)
