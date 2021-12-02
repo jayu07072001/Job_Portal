@@ -351,3 +351,10 @@ nav ul li a:hover
     background-color:black;
     color: white;
 }
+nav .name2
+{
+    position: absolute;
+    left: 1125px;
+    font-family:'Poppins',sans-serif;
+    color: white;
+}

@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from .models import *
 from django.contrib.auth import authenticate,login,logout
 from datetime import date
+import datetime
 
 def home(request):
     return render(request, 'job/home.html')
@@ -246,8 +247,24 @@ def job_detail(request,uid):
 def apply_job(request,uid):
     if not request.user.is_authenticated:
         return redirect('user_login')
+
+    error=""
+    user=request.user
+
+    jobseeker=job_seeker.objects.get(user=user)
     job=jobs.objects.get(id=uid)
-    d={'job':job}
+    date1 = date.today()
+    if job.end_date < date1:
+        error="close"
+    elif job.start_date > date1:
+        error="not open"
+    else:
+        if request.method=='POST':
+            resume1=request.FILES['resume']
+            Apply.objects.create(job=job,student=jobseeker,resume=resume1,applied_date=date.today())
+            error="no"
+
+    d={'error':error}
     return render(request,'job/apply_job.html',d)
 
 def delete_job(request, pid):

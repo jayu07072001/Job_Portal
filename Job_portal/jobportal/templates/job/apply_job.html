@@ -5,12 +5,34 @@
 <div class="bg1">
 <div class="signup-box3">
       <h1>Sign Up</h1>
-      <form method="post" name="Apply"  onsubmit="return checkpass()">
+      <form method="post" name="Apply"  onsubmit="return checkpass()" enctype="multipart/form-data">
       {% csrf_token %}
         <label>Resume</label>
-        <input type="file" placeholder="" name="fname" />
+        <input type="file" placeholder="" name="resume" />
         <input type="submit" value="Submit" />
       </form>
     </div>
     </div>
+
+    {% ifequal error "close" %}
+    <script>
+    alert("Application are closed, Last date is over ");
+    window.location = ("{% url 'alljobs' %}")
+    </script>
+    {%endifequal%}
+
+    {% ifequal error "not open" %}
+    <script>
+    alert("Application is not open");
+    window.location = ("{% url 'alljobs' %}")
+    </script>
+    {%endifequal%}
+
+    {% ifequal error "no" %}
+    <script>
+    alert("Job Application submitted Successfully ");
+    window.location = ("{% url 'alljobs' %}")
+    </script>
+    {%endifequal%}
+
 {%endblock content %}

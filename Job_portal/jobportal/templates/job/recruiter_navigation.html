@@ -24,9 +24,12 @@
 		<li><a href ="{% url 'recruiter_about' %}" >About</a></li>
 		<li><a href = "{% url 'recruiter_contact' %}">contact</a></li> 
         <li><a href = "{% url 'Logout' %}">Logout</a></li> 
-		<li><p>{{request.user.first_name}}</P></li>
 	</ul>
+	<div class="name2">
+		<p>{{request.user.first_name}}</p>
+	</div>
 	</nav>
+
 {% block content %} {% endblock content %}
 
 <footer>
