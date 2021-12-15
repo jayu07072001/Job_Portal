@@ -290,10 +290,9 @@
     color: white;
     font-size: 18px;
     padding: 0;
-    position: absolute;
-    left: 450px;
-    bottom: 200px;
-
+    position: relative;
+    left: -5px;
+    bottom: 10px;
   }
   .login-box form input[type="submit"]:hover{
     background-color: #009688;
@@ -303,10 +302,6 @@
   {
     background-color: #ddd;
   }
- .hedinglist
- {
-  
- }
  
  .hedinglist center 
  {

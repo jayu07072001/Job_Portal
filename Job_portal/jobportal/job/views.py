@@ -274,3 +274,25 @@ def delete_job(request, pid):
     job=jobs.objects.get(id=pid)
     job.delete()
     return redirect('job_list')
+
+def candidates_applied(request):
+    if not request.user.is_authenticated:
+        return redirect('recruiter_login')
+
+    data=Apply.objects.all()
+    d={'data':data}
+    return render(request,'job/candidates_applied.html',d)
+
+
+def search_jobs(request):
+    if not request.user.is_authenticated:
+        return redirect('user_login')
+    user=request.user
+    jobseeker=job_seeker.objects.get(user=user)
+    data=Apply.objects.filter(student=jobseeker)
+    job=jobs.objects.filter(title__contains=request.GET['title'],location__contains=request.GET['job_location'])
+    li=[]
+    for i in data:
+        li.append(i.job.id)
+    d={'job':job,'li':li}
+    return render(request,'job/search_jobs.html',d)

@@ -7,10 +7,13 @@
 </div>
 <br>
 <br>
+<form method="get" action="search_jobs">
+    {% csrf_token %}
 <div class="search-job text-center">
-    <input type ="text" class="form-control" placeholder="Python Developer">
-    <input type ="text" class="form-control" placeholder="place">
-    <input type="button" class="btn btn-primary" value="Search job">
+    <input type ="text" class="form-control" name="title" placeholder="Python Developer">
+    <input type ="text" class="form-control" name="job_location" placeholder="place1">    
+    <input type="Submit" class="btn btn-success " value="submit">
 </div>
+</form>
 <br>
 {% endblock content %}

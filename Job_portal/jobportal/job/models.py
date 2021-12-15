@@ -40,4 +40,4 @@ class Apply(models.Model):
     resume=models.FileField(null=True)
     applied_date=models.DateField()
     def __str__(self):
-        return self.id
+        return self.student.user.first_name
