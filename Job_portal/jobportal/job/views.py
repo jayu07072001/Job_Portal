@@ -296,3 +296,8 @@ def search_jobs(request):
         li.append(i.job.id)
     d={'job':job,'li':li}
     return render(request,'job/search_jobs.html',d)
+
+def search(request):
+    job=jobs.objects.filter(title__contains=request.GET['title'],location__contains=request.GET['job_location'])
+    d={'job':job}
+    return render(request,'job/search.html',d)

@@ -1,0 +1,42 @@
+{% extends 'job/base.html' %}
+{% load static %}
+{%block title%} Job Detail {%endblock title %}
+{% block content %}
+
+<div class="hedinglist">
+<br>
+<br>
+
+<h2 style="text-align:center;font-size:40px;margin-top:-16px;">Job Details </h2>
+</div>
+<div class="vl">
+    </div>
+<div class="row" style="margin-left:20px;margin-top:50px;">
+    <div class="col-md-4">
+        <img src={{job.image.url}} style="height=400px;width:250px;border-radius:50%;">
+    </div>
+    <div class="col-sm-4" >
+        <h2>{{job.title}}</h2>
+        <br>
+        <div class="job_details">
+        <p style="color:black;font-size:18px;font-family:sans-serif">Company Name : {{job.recruiter1.company}}
+        <p style="color:black;font-size:18px;font-family:sans-serif;"><i class="fa fa-map-marker mr-2" style="margin-right:25px;"></i>Location : {{job.location}}
+        <p style="color:black;font-size:18px;font-family:sans-serif;"  > <i class="fa fa-money" style="margin-right:10px;" ></i> Salary : <i class="fa fa-inr" style="margin-right:4px;"></i><strong>{{job.salary}}</strong></p>
+        <a href="{% url 'apply_job' job.id %} " class="btn btn-success btn-sm" >Apply</a>
+        </div>
+    </div>
+    <div class="col-md-4" >
+    <p style="color:black;font-size:18px;font-family:sans-serif;margin-top:20px;"><i class="fa fa-calendar" style="margin-right:10px;"></i> Start Date : {{job.start_date}}
+    <p style="color:black;font-size:18px;font-family:sans-serif;margin-top:20px;"><i class="fa fa-calendar" style="margin-right:10px;"></i> End Date : {{job.end_date}}
+    <p style="color:black;font-size:18px;font-family:sans-serif;margin-top:20px;"> Description : {{job.description}}
+    <p style="color:black;font-size:18px;font-family:sans-serif;margin-top:20px;"> Skills : {{job.skills}}
+    <p style="color:black;font-size:18px;font-family:sans-serif;margin-top:20px;"> Experience (in years) : {{job.experience}}
+
+    
+    </div>
+</div>
+<br>
+
+
+
+{%endblock content %}
