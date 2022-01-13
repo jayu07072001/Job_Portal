@@ -1,9 +1,12 @@
 from django.contrib.auth.models import User
+from django.http import request
 from django.shortcuts import redirect, render
 from .models import *
 from django.contrib.auth import authenticate,login,logout
 from datetime import date
 import datetime
+from django.core.mail import send_mail
+from jobportal import settings
 
 def home(request):
     return render(request, 'job/home.html')
@@ -21,10 +24,16 @@ def user_contact(request):
     return render(request,'job/user_contact.html')
 
 def recruiter_about(request):
-    return render(request,'job/recruiter_about.html')
+    user=request.user
+    recruiter2=recruiter.objects.get(user=user)
+    d={'recruiter2':recruiter2}
+    return render(request,'job/recruiter_about.html',d)
 
 def recruiter_contact(request):
-    return render(request,'job/recruiter_contact.html')
+    user=request.user
+    recruiter2=recruiter.objects.get(user=user)
+    d={'recruiter2':recruiter2}
+    return render(request,'job/recruiter_contact.html',d)
 
 def user_login(request):
     error=""
@@ -61,13 +70,23 @@ def signup_jobseeker(request):
         con=request.POST['cont']
         p=request.POST['pwd1']
         gen=request.POST['gender']
+        expy=request.POST['expy']
+        expc=request.POST['expc']
         type="jobseeker"
         try:
            user= User.objects.create_user(first_name=f,last_name=l,username=e,password=p)
-           job_seeker.objects.create(user=user,mobile=con,gender=gen,type=type)
+           job_seeker.objects.create(user=user,mobile=con,gender=gen,experience=expy,experience_cmp=expc,type=type)
+           user.save()
+           user.is_active = False
+           subject = "Welcome to RentalX"
+           message = "Hello! " + user.first_name +"\n" +"Welcome to RentalX! \n Thank You for using our services.\n Please click on the below link in order to activate your account. \n\n Thanking You \n Viraj M"
+           from_email = settings.EMAIL_HOST_USER
+           to_list = [user.username]
+           send_mail(subject, message, from_email, to_list, fail_silently=True)
            error="no"
+           return redirect('user_login')
         except:
-            error="yes"
+            pass
         
     d={'error':error}
     
@@ -83,7 +102,10 @@ def recruiter_home(request):
     if not request.user.is_authenticated:
         return redirect('recruiter_login')
 
-    return render(request,'job/recruiter_home.html')
+    user=request.user
+    recruiter2=recruiter.objects.get(user=user)
+    d={'recruiter2':recruiter2}
+    return render(request,'job/recruiter_home.html',d)
 
 
 
@@ -135,7 +157,9 @@ def recruiter_login(request):
 def add_job(request):
     if not request.user.is_authenticated:
         return redirect('recruiter_login')
-    
+    user=request.user
+    recruiter2=recruiter.objects.get(user=user)
+
     error=""
     if request.method=='POST':
         j=request.POST['jobtitle']
@@ -155,7 +179,7 @@ def add_job(request):
         except:
             error="yes"
         
-    d={'error':error}
+    d={'error':error,'recruiter2':recruiter2}
 
 
 
@@ -278,9 +302,10 @@ def delete_job(request, pid):
 def candidates_applied(request):
     if not request.user.is_authenticated:
         return redirect('recruiter_login')
-
+    user=request.user
+    recruiter2=recruiter.objects.get(user=user)
     data=Apply.objects.all()
-    d={'data':data}
+    d={'data':data,'recruiter2':recruiter2}
     return render(request,'job/candidates_applied.html',d)
 
 
@@ -301,3 +326,22 @@ def search(request):
     job=jobs.objects.filter(title__contains=request.GET['title'],location__contains=request.GET['job_location'])
     d={'job':job}
     return render(request,'job/search.html',d)
+
+def quiz_form(request):
+    if not request.user.is_authenticated:
+        return redirect('recruiter_login')
+    
+    return render(request,'job/quiz_form.html')
+
+def notification(request):
+     if not request.user.is_authenticated:
+        return redirect('recruiter_login')
+     user=request.user
+     b=User.objects.all()
+     recruiter2=recruiter.objects.get(user=user)
+     a=recruiter2.company
+     jobseeker=job_seeker.objects.filter(experience_cmp=a)
+     
+         
+     d={'jobseeker':jobseeker,'recruiter2':recruiter2,'b':b}
+     return render(request,'job/notification.html',d)

@@ -24,7 +24,7 @@
         <li><a href = "{% url 'Logout' %}">Logout</a></li> 
 	</ul>
 	<div class="name2">
-		<p>{{request.user.first_name}}</p>
+		{{request.user.first_name}}</p>
 	</div>
 	</nav>
 {% block content %} {% endblock content %}

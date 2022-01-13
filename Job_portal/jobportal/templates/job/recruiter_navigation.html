@@ -21,12 +21,13 @@
 		<li><a href ="{% url 'job_list' %}" >Job list</a> </li>
 		<li><a href ="{% url 'add_job' %}" >Post Job</a> </li>
 		<li><a href ="{% url 'candidates_applied' %}" >candidates applied</a> </li>
+		<li><a href ="{% url 'notification' %}" >Notification</a> </li>
 		<li><a href ="{% url 'recruiter_about' %}" >About</a></li>
 		<li><a href = "{% url 'recruiter_contact' %}">contact</a></li> 
         <li><a href = "{% url 'Logout' %}">Logout</a></li> 
 	</ul>
 	<div class="name2">
-		<p>{{request.user.first_name}}</p>
+		<p>{{recruiter2.company}}</p>
 	</div>
 	</nav>
 

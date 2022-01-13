@@ -12,7 +12,14 @@ function checkpass()
     return false;
   }
   return true;
+  
 }
+function exp(){
+  document.getElementById("exp").style.visibility="visible";
+    }
+    function fresher(){
+        document.getElementById("exp").style.visibility="hidden";
+    }
 </script>
 <div class="bg1">
 <div class="signup-box">
@@ -32,6 +39,12 @@ function checkpass()
                <option value="male">Male</option>
               <option value="female">Female</option>
           </select>
+          <div id="exp">
+              <label> Experience (in Company) (optional) </label>
+              <input type="text" placeholder="" name="expc"/>
+              <label> Experience (in Year) (optional) </label>
+              <input type="text" placeholder="" name="expy"/>
+          </div>
         <label>Password</label>
         <input type="password" placeholder="" name="pwd1" />
         <label>Confirm Password</label>

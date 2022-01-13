@@ -4,6 +4,8 @@ class job_seeker(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     mobile=models.CharField(max_length=10)
     gender=models.CharField(max_length=20,null=True)
+    experience=models.CharField(max_length=20,null=True)
+    experience_cmp=models.CharField(max_length=20,null=True)
     type=models.CharField(max_length=20,null=True)
     def __str__(self):
         return self.user.username
@@ -15,7 +17,6 @@ class recruiter(models.Model):
     type=models.CharField(max_length=20,null=True)
     def __str__(self):
         return self.user.username
-
 
 class jobs(models.Model):
     recruiter1 = models.ForeignKey(recruiter,on_delete=models.CASCADE)
@@ -41,3 +42,14 @@ class Apply(models.Model):
     applied_date=models.DateField()
     def __str__(self):
         return self.student.user.first_name
+
+class quiz(models.Model):
+     recruiter1 = models.ForeignKey(recruiter,on_delete=models.CASCADE)
+     questions=models.CharField(max_length=100)
+     option1=models.CharField(max_length=100)
+     option2=models.CharField(max_length=100)
+     option3=models.CharField(max_length=100)
+     option4=models.CharField(max_length=100)
+     crr=models.CharField(max_length=100)
+     def __str__(self):
+        return self.recruiter1.company

@@ -1,0 +1,35 @@
+{% extends 'job/recruiter_navigation.html' %}
+{% load static %}
+{%block title%} Make A Quiz {%endblock title %}
+{% block content %}
+
+<div class="signup-box4">
+    <div class=".card-content" >
+        <h1>Quiz </h1>
+        <form method="post" id="form_1">
+            {% csrf_token %}
+            <label>Question 1</label>
+            <textarea name="description" ></textarea>
+            <label>option1</label>
+            <input type="text" placeholder="" name="skills" />
+            <label>option2</label>
+            <input type="text" placeholder="" name="skills" />
+            <label>option3</label>
+            <input type="text" placeholder="" name="skills" />
+            <label>option4</label>
+            <input type="text" placeholder="" name="skills" />
+            <label>correct answer</label>
+            <input type="text" placeholder="" name="skills" />
+            <button class="btn btn-success btn-sm" id="next1">next </button>
+        </form>
+    </div>
+</div>
+
+
+
+<br>
+<br>
+<br>
+
+          
+{% endblock content %}
