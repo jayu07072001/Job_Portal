@@ -1,3 +1,4 @@
+from typing import Type
 from django.contrib.auth.models import User
 from django.http import request
 from django.shortcuts import redirect, render
@@ -74,7 +75,7 @@ def signup_jobseeker(request):
         expc=request.POST['expc']
         type="jobseeker"
         try:
-           user= User.objects.create_user(first_name=f,last_name=l,username=e,password=p)
+           user= User.objects.create_user(first_name=f,last_name=l,username=e,password=p,Type=type)
            job_seeker.objects.create(user=user,mobile=con,gender=gen,experience=expy,experience_cmp=expc,type=type)
            user.save()
            user.is_active = False
@@ -86,7 +87,7 @@ def signup_jobseeker(request):
            error="no"
            return redirect('user_login')
         except:
-            pass
+            error="yes"
         
     d={'error':error}
     
@@ -337,11 +338,11 @@ def notification(request):
      if not request.user.is_authenticated:
         return redirect('recruiter_login')
      user=request.user
-     b=User.objects.all()
+    
      recruiter2=recruiter.objects.get(user=user)
      a=recruiter2.company
      jobseeker=job_seeker.objects.filter(experience_cmp=a)
      
          
-     d={'jobseeker':jobseeker,'recruiter2':recruiter2,'b':b}
+     d={'jobseeker':jobseeker,'recruiter2':recruiter2}
      return render(request,'job/notification.html',d)

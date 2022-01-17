@@ -1,5 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
+
+class acc(models.Model):
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    type=models.CharField(max_length=20,null=True)
+    def __str__(self):
+        return self.user.first_name
+
+
+
 class job_seeker(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     mobile=models.CharField(max_length=10)
@@ -8,7 +17,7 @@ class job_seeker(models.Model):
     experience_cmp=models.CharField(max_length=20,null=True)
     type=models.CharField(max_length=20,null=True)
     def __str__(self):
-        return self.user.username
+        return self.user.first_name
 
 class recruiter(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)

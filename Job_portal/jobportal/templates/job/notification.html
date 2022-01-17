@@ -19,8 +19,22 @@
                     {% for i in jobseeker %}
                         <tr style="background-color:#485461;text-align:center;">
                             <td>{{forloop.counter}}</td>
-                            <td>s{{i.b.first_name}}</td>
-                            <td>{}</td>
+                            <td>{{i.user.first_name}}  {{ i.user.last_name}}</td>
+                            <td><div class="center">
+                                <div class="stars">
+                                  <input type="radio" id="five" name="rate" value="5">
+                                  <label for="five"></label>
+                                  <input type="radio" id="four" name="rate" value="4">
+                                  <label for="four"></label>
+                                  <input type="radio" id="three" name="rate" value="3">
+                                  <label for="three"></label>
+                                  <input type="radio" id="two" name="rate" value="2">
+                                  <label for="two"></label>
+                                  <input type="radio" id="one" name="rate" value="1">
+                                  <label for="one"></label>
+                                  <span class="result"></span>
+                                </div>
+                                 </div></td>
                         </tr>
                     {%endfor%}
                 </tbody>
