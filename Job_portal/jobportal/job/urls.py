@@ -31,4 +31,6 @@ urlpatterns = [
     path('job_detail_home/<int:uid>',views.job_detail,name='job_detail_home '),
     path('recruiter_home/quiz_form',views.quiz_form,name="quiz_form"),
     path('notification/',views.notification,name='notification'),
+    path('user_detail/<int:uid>',views.user_detail,name='user_detail'),
+    path('rate/', views.rate_image, name='rate-view'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -46,7 +46,7 @@ function exp(){
               <input type="text" placeholder="" name="expy"/>
           </div>
         <label>Password</label>
-        <input type="password" placeholder="" name="pwd1" />
+        <input type="password" placeholder="" name="pwd1" title="Password must be 8 characters including 1 uppercase letter, 1 lowercase letter and numeric characters" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
         <label>Confirm Password</label>
         <input type="password" placeholder="" name="pwd2"/>
         <input type="submit" value="Submit" />

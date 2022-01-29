@@ -338,11 +338,32 @@ def notification(request):
      if not request.user.is_authenticated:
         return redirect('recruiter_login')
      user=request.user
-    
      recruiter2=recruiter.objects.get(user=user)
      a=recruiter2.company
      jobseeker=job_seeker.objects.filter(experience_cmp=a)
+     data=Rating.objects.all()
+     li=[]
+     for i in data:
+         li.append(i.student.id)
      
-         
-     d={'jobseeker':jobseeker,'recruiter2':recruiter2}
+     d={'jobseeker':jobseeker,'recruiter2':recruiter2,'li':li}
      return render(request,'job/notification.html',d)
+
+def rate_image(request):
+    user=request.user
+    recruiter2=recruiter.objects.get(user=user)
+
+    if request.method == 'POST':
+        el_id = request.POST.get('el_id')
+        val = request.POST.get('val')
+        print(val)
+        a=job_seeker.objects.get(id=el_id)
+        obj = Rating.objects.create(student=a,recruiter1=recruiter2,score=val)
+        obj.save()
+        
+    return render(request,'job/notification.html')
+
+def user_detail(request,uid):
+    user=job_seeker.objects.get(id=uid)
+    d={'user':user}
+    return render(request,'job/user_detail.html',d)

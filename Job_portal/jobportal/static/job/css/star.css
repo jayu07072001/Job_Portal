@@ -1,26 +1,27 @@
-  .stars input{
-    display: none; 
-    
-  }
+.checked {
+    color: orange;
+}
 
+.my-btn {
+    background-color: inherit !important;
+    border: 0 !important;
+}
 
-  .stars label{
-    float:right;
-    color: lightgrey;
-    margin: 0 5px;
-    text-shadow: 1px 1px #bbb;
-    cursor: pointer;
-    
-  }
-  .stars label:before{
-    content: '★';
-  }
+#btn
+{
+    position: relative;
+    top:-12px;
+    left:30px;
+    height: 40px;
+    background-color: black;
+}
+#btn:hover
+{
+    background-color: #f9aa33;
+    color: black;
+}
 
-  .stars input:checked ~ label{
-    color: gold;
-    text-shadow: 1px 1px #c60;
-  }
-  .stars:not(:checked) > label:hover,
-  .stars:not(:checked) > label:hover ~ label{
-    color: gold;
-  }
+#btnText
+{
+    text-align: center;
+}

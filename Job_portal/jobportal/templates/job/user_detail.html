@@ -1,0 +1,41 @@
+{% extends 'job/recruiter_navigation.html' %}
+{% load static %}
+{% block title %} User details {% endblock title %}
+{% block content %}
+<br>
+<br>
+<h2 style="text-align:center;font-size:40px;margin-top:-16px;">Rate  </h2>
+<br>
+<div class="row">
+    <div class="col text-center">
+    
+        <form class="rate-form" action="" method="POST" id="{{user.id}}">
+            {% csrf_token %}
+            <button type="submit" class="fa fa-star fa-3x my-btn" id="first"></button>
+            <button type="submit" class="fa fa-star fa-3x my-btn" id="second"></button>
+            <button type="submit" class="fa fa-star fa-3x my-btn" id="third"></button>
+            <button type="submit" class="fa fa-star fa-3x my-btn" id="fourth"></button>
+            <button type="submit" class="fa fa-star fa-3x my-btn" id="fifth"></button>
+            <a href={% url 'notification' %} class=" btn btn-primary" id="btn" style="padding-left:20px;hei" onclick="myfunc()"> <p id="btnText">Submit</p></a>
+        </form>
+        <br>
+        <div id="confirm-box"></div>
+    </div>
+    
+</div>
+<script>
+    function myfunc()
+        {
+            alert("Your rating has been recorded");
+        }
+</script>
+<script type="text/javascript">
+    const btn = document.querySelector("#btn");
+    const btnText = document.querySelector("#btnText");
+
+    btn.onclick = () => {
+        btnText.innerHTML = "Thanks";
+        btn.classList.add("active");
+    };
+</script>
+{% endblock content %}

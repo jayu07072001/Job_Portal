@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class acc(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
@@ -52,13 +53,15 @@ class Apply(models.Model):
     def __str__(self):
         return self.student.user.first_name
 
-class quiz(models.Model):
-     recruiter1 = models.ForeignKey(recruiter,on_delete=models.CASCADE)
-     questions=models.CharField(max_length=100)
-     option1=models.CharField(max_length=100)
-     option2=models.CharField(max_length=100)
-     option3=models.CharField(max_length=100)
-     option4=models.CharField(max_length=100)
-     crr=models.CharField(max_length=100)
-     def __str__(self):
-        return self.recruiter1.company
+class Rating(models.Model):
+    recruiter1 = models.ForeignKey(recruiter,on_delete=models.CASCADE)
+    student=models.ForeignKey(job_seeker,on_delete=models.CASCADE)
+    score = models.IntegerField(default=0,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(0),
+        ]
+    )
+
+    def __str__(self):
+        return self.student.user.first_name

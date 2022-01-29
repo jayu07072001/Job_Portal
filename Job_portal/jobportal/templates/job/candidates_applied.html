@@ -18,7 +18,7 @@
     <th>Email-id</th>
     <th>Contact No.</th>
     <th>Job Title</th>
-    <th>Company</th>
+    <th>Ratings</th>
     <th>Apply date</th>
     <th>Resume</th>
 </tr>
@@ -33,7 +33,11 @@
                 <td>{{i.student.user.username}}</td>
                 <td>{{i.student.mobile}}</td>
                 <td>{{i.job.title}}</td>
-                <td>{{i.job.recruiter1.company}}</td>
+                <td><span class="fa fa-star " id="first" ></span>
+                    <span class="fa fa-star " id="second" ></span>
+                    <span class="fa fa-star " id="third" ></span>
+                    <span class="fa fa-star" id="fourth" ></span>
+                    <span class="fa fa-star" id="fifth" ></span></td>
                 <td>{{i.applied_date}}</td>
                 <td><a href = "{{i.resume.url}}"> download </a></td>
 
