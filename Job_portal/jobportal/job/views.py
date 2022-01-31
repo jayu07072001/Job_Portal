@@ -306,7 +306,13 @@ def candidates_applied(request):
     user=request.user
     recruiter2=recruiter.objects.get(user=user)
     data=Apply.objects.all()
-    d={'data':data,'recruiter2':recruiter2}
+    print(data)
+    rate=Rating.objects.all()
+
+
+
+    print(rate)
+    d={'data':data,'recruiter2':recruiter2,'rate':rate}
     return render(request,'job/candidates_applied.html',d)
 
 

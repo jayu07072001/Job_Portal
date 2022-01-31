@@ -33,11 +33,63 @@
                 <td>{{i.student.user.username}}</td>
                 <td>{{i.student.mobile}}</td>
                 <td>{{i.job.title}}</td>
-                <td><span class="fa fa-star " id="first" ></span>
-                    <span class="fa fa-star " id="second" ></span>
-                    <span class="fa fa-star " id="third" ></span>
-                    <span class="fa fa-star" id="fourth" ></span>
-                    <span class="fa fa-star" id="fifth" ></span></td>
+                <!-- <span class="fa fa-star "></span> -->
+                <td>
+                    {% for a in rate %}
+                        {% if i.student.id == a.student.id %}
+
+                           {% if a.score == 1 %}
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star "></span>
+                           <span class="fa fa-star "></span>
+                           <span class="fa fa-star "></span>
+                           <span class="fa fa-star "></span>
+                           {%endif%}
+
+                           {% if a.score == 2 %}
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star "></span>
+                           <span class="fa fa-star "></span>
+                           <span class="fa fa-star "></span>
+                           {%endif%}
+
+                           {% if a.score == 3 %}
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star "></span>
+                           <span class="fa fa-star "></span>
+                           {%endif%}
+
+                           {% if a.score == 4 %}
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star "></span>
+                           {%endif%}
+
+                           {% if a.score == 5 %}
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           {%endif%}     
+                                                  
+                        {%endif%}
+    
+                    {%endfor%}
+
+            
+
+
+
+                    
+                   
+                </td>
+                
                 <td>{{i.applied_date}}</td>
                 <td><a href = "{{i.resume.url}}"> download </a></td>
 
@@ -50,5 +102,8 @@
 <br>
 </div>
 </div>
+
+<script> 
+</script>
 
 {% endblock content %}
