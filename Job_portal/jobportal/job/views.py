@@ -75,12 +75,12 @@ def signup_jobseeker(request):
         expc=request.POST['expc']
         type="jobseeker"
         try:
-           user= User.objects.create_user(first_name=f,last_name=l,username=e,password=p,Type=type)
+           user= User.objects.create_user(first_name=f,last_name=l,username=e,password=p)
            job_seeker.objects.create(user=user,mobile=con,gender=gen,experience=expy,experience_cmp=expc,type=type)
            user.save()
            user.is_active = False
-           subject = "Welcome to RentalX"
-           message = "Hello! " + user.first_name +"\n" +"Welcome to RentalX! \n Thank You for using our services.\n Please click on the below link in order to activate your account. \n\n Thanking You \n Viraj M"
+           subject = "Welcome to Jobs"
+           message = "Hello! " + user.first_name +"\n" +"Welcome to Job Portal! \n Thank You for using our services.\n Please click on the below link in order to activate your account. \n\n Thanking You \n  "
            from_email = settings.EMAIL_HOST_USER
            to_list = [user.username]
            send_mail(subject, message, from_email, to_list, fail_silently=True)
